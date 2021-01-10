@@ -25,7 +25,7 @@ jobs:
 
       - name: move
         run: |
-          mv locksmith/_site/ /site && rm -rf locksmith/* && cp -r /site/* locksmith/
+          sudo mv locksmith/_site/ /site && sudo rm -rf locksmith/* && sudo cp -r /site/* locksmith/
   
 
       - name: GIT
