@@ -28,11 +28,13 @@ jobs:
         uses: docker://ruby:2.5
         with:
           run: |
-            ls && bundle exec jekyll build && \
+            ls && cd locksmith && bundle exec jekyll build && ls && ls _site
 
       - name: GIT
         run: git config --global user.email "action@github.com" && git config --global user.name "GitHub Action"
       
       - name: GIT
-        run:   ls && cd _site && git add . && git checkout -b gh-pages && git commit -m 'Site built' 
+        run:   ls && cd locksmith && cd _site && git add . && git checkout -b gh-pages && git commit -m 'Site built' 
         
+      - name: GIT
+        run: git push origin gh-pages --force
