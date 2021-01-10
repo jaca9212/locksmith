@@ -25,10 +25,8 @@ jobs:
 
       # Build Jekyll site
       - name: build
-        uses: docker://ruby:2.5
-        with:
-          run: |
-            ls && cd locksmith && bundle exec jekyll build && ls && ls _site
+        run: |
+          ls && cd locksmith && bundle exec jekyll build && ls && ls _site
 
       - name: GIT
         run: git config --global user.email "action@github.com" && git config --global user.name "GitHub Action"
