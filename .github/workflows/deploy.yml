@@ -32,7 +32,7 @@ jobs:
         run: git config --global user.email "action@github.com" && git config --global user.name "GitHub Action"
       
       - name: GIT
-        run:   ls && cd locksmith && git add -f . && git checkout -b pages && git commit -m 'Site built' 
+        run:   ls && cd locksmith && git checkout -b pages && git add -f .  && git commit -m 'Site built' 
         
       - name: GIT
         run: git push -f origin pages 
