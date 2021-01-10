@@ -4,7 +4,7 @@ on:
   push:
     # Action run will only be triggered on updates to master branch
     branches:
-      - master
+      - main
 
 jobs:
   run-deploy:
