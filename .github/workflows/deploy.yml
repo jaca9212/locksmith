@@ -16,12 +16,17 @@ jobs:
 
       # Install dependencies
       - name: dependencies
-        run: sudo apt-get update && sudo apt-get install ruby-full build-essential zlib1g-dev -y && sudo gem install jekyll bundler
+        run: sudo apt-get update && sudo apt-get install ruby-full build-essential zlib1g-dev tree -y && sudo gem install jekyll bundler
 
       # Build Jekyll site
       - name: build
         run: |
           ls && cd locksmith && bundle install && bundle exec jekyll build && ls && ls _site
+
+      - name: move
+        run: |
+          mv locksmith/_site/ /site && rm -rf locksmith/* && cp -r /site/* locksmith/
+  
 
       - name: GIT
         run: git config --global user.email "action@github.com" && git config --global user.name "GitHub Action"
