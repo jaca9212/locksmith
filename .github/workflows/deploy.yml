@@ -32,7 +32,7 @@ jobs:
           LANGUAGE: en_US.UTF-8
           LC_ALL: C.UTF-8
         with:
-          source: |
+          run: |
             cd locksmith && bundle exec jekyll build && \
 
       - name: GIT
