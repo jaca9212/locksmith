@@ -26,18 +26,13 @@ jobs:
       # Build Jekyll site
       - name: build
         uses: docker://ruby:2.5
-        env:
-          BUNDLE_PATH: .bundle
-          LANG: en_US.UTF-8
-          LANGUAGE: en_US.UTF-8
-          LC_ALL: C.UTF-8
         with:
           run: |
-            ls && cd locksmith && ls && bundle exec jekyll build && \
+            ls && bundle exec jekyll build && \
 
       - name: GIT
         run: git config --global user.email "action@github.com" && git config --global user.name "GitHub Action"
       
       - name: GIT
-        run:  cd locksmith && ls && cd _site && git add . && git checkout -b gh-pages && git commit -m 'Site built' 
+        run:   ls && cd _site && git add . && git checkout -b gh-pages && git commit -m 'Site built' 
         
