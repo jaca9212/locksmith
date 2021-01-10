@@ -16,12 +16,7 @@ jobs:
 
       # Install dependencies
       - name: dependencies
-        uses: docker://ruby:2.5
-        env:
-          BUNDLE_PATH: .bundle
-        with:
-          entrypoint: gem
-          args: install jekyll bundler
+        run: apt-get update && apt-get install ruby-full build-essential zlib1g-dev -y && gem install jekyll bundler
 
       # Build Jekyll site
       - name: build
