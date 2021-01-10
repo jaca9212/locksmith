@@ -1,0 +1,43 @@
+name: deploy
+
+on:
+  push:
+    # Action run will only be triggered on updates to master branch
+    branches:
+      - master
+
+jobs:
+  run-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Check out git repository
+      - name: checkout
+        uses: actions/checkout@master
+
+      # Install dependencies
+      - name: dependencies
+        uses: docker://ruby:2.5
+        env:
+          BUNDLE_PATH: .bundle
+        with:
+          entrypoint: bundle
+          args: install -j=4 jekyll bundler
+
+      # Build Jekyll site
+      - name: build
+        uses: docker://ruby:2.5
+        env:
+          BUNDLE_PATH: .bundle
+          LANG: en_US.UTF-8
+          LANGUAGE: en_US.UTF-8
+          LC_ALL: C.UTF-8
+        with:
+          source: |
+            cd locksmith && bundle exec jekyll build && \
+
+      - name: GIT
+        run: git config --global user.email "action@github.com" && git config --global user.name "GitHub Action"
+      
+      - name: GIT
+        run:  cd _site && git add . && git checkout -b gh-pages && git commit -m 'Site built' 
+        
