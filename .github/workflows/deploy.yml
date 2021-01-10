@@ -16,7 +16,7 @@ jobs:
 
       # Install dependencies
       - name: dependencies
-        run: sudo apt-get update && sudo apt-get install ruby-full build-essential zlib1g-dev -y && gem install jekyll bundler
+        run: sudo apt-get update && sudo apt-get install ruby-full build-essential zlib1g-dev -y && sudo gem install jekyll bundler
 
       # Build Jekyll site
       - name: build
