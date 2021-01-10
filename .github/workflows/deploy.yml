@@ -21,7 +21,7 @@ jobs:
       # Build Jekyll site
       - name: build
         run: |
-          ls && cd locksmith && bundle exec jekyll build && ls && ls _site
+          ls && cd locksmith && bundle install && bundle exec jekyll build && ls && ls _site
 
       - name: GIT
         run: git config --global user.email "action@github.com" && git config --global user.name "GitHub Action"
