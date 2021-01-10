@@ -21,7 +21,7 @@ jobs:
           BUNDLE_PATH: .bundle
         with:
           entrypoint: gem
-          args: install -j=4 jekyll bundler
+          args: install jekyll bundler
 
       # Build Jekyll site
       - name: build
